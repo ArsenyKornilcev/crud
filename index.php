@@ -27,7 +27,8 @@ $goods = mysqli_fetch_all($goods);
             <th>&#10006;</th>
         </tr>
         <?php
-        foreach ($goods as $item) {
+        if (!empty($goods)) {
+            foreach ($goods as $item) {
         ?>
             <tr>
                 <td><?= $item[0] ?></td>
@@ -39,6 +40,10 @@ $goods = mysqli_fetch_all($goods);
                 <td><a href="vendor/delete.php?id=<?= $item[0] ?>">Удалить</a></td>
             </tr>
         <?php
+        }} else {
+            ?>
+            <h4>Товаров пока нет</h4>
+            <?php
         }
         ?>
     </table>

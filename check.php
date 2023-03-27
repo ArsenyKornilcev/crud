@@ -37,17 +37,25 @@ $comments = mysqli_fetch_all($comments);
         <button>Добавить</button>
     </form>
     <hr>
-    <h4>Комментарии:</h4>
-    <ul>
-        <?php
-        foreach ($comments as $comm) {
+    <?php if (!empty($comments)) 
+    { ?>
+        <h4>Комментарии:</h4>
+        <ul>
+            <?php
+            foreach ($comments as $comm) {
+            ?>
+                <li><?= $comm[2] ?></li>
+            <?php
+            }
+            ?>
+        </ul>
+    <?php
+    } else {
         ?>
-            <li><?= $comm[2] ?></li>
+        <h4>Нет комментариев</h4>
         <?php
-        }
-        ?>
-    </ul>
-
+    }
+    ?>
 </body>
 
 </html>
